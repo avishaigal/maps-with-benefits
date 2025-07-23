@@ -305,7 +305,6 @@ function handleStats(stats, selector) {
     colorsStr += `${colors[labels.length - 1]} ${100}%`
     // Example:
     // colorsStr = `purple 0%, purple 33%, blue 33%, blue 67%, red 67%, red 100%`
-console.log(selector);
 
     const elPie = document.querySelector(`.${selector} .pie`)
     const style = `background-image: conic-gradient(${colorsStr})`
