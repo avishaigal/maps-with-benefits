@@ -105,7 +105,7 @@ function getLocCountByTimeMap() {
     return storageService.query(DB_KEY)
         .then(locs => {
             const locCountByTimeMap = locs.reduce((map, loc) => {
-                console.log(loc);
+                
                 
                 if (loc.updatedAt === loc.createdAt) map.past++
                 else if (Date.now() - loc.updatedAt < gTime) map.today++
