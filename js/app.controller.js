@@ -118,6 +118,7 @@ function onAddLoc(geo) {
 
 function loadAndRenderLocs() {
     locService.query()
+    
         .then(renderLocs)
         .catch(err => {
             console.error('OOPs:', err)
