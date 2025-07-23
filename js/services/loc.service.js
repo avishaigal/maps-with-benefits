@@ -54,8 +54,9 @@ function query() {
                 locs.sort((p1, p2) => (p1.rate - p2.rate) * gSortBy.rate)
             } else if (gSortBy.name !== undefined) {
                 locs.sort((p1, p2) => p1.name.localeCompare(p2.name) * gSortBy.name)
+            } else if (gSortBy.time !== undefined) {
+                locs.sort((p1, p2) => (p1.updatedAt - p2.updatedAt) * gSortBy.time)
             }
-
             return locs
         })
 }
@@ -151,6 +152,7 @@ function _createDemoLocs() {
 function _createLoc(loc) {
     loc.id = utilService.makeId()
     loc.createdAt = loc.updatedAt = utilService.randomPastTime()
+
     return loc
 }
 

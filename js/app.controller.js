@@ -71,6 +71,8 @@ function renderLocs(locs) {
     renderLocStats()
 
     if (selectedLocId) {
+        console.log(selectedLocId);
+        
         const selectedLoc = locs.find(loc => loc.id === selectedLocId)
         if(selectedLoc) displayLoc(selectedLoc)
     }
