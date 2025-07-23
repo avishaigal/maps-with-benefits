@@ -4,6 +4,8 @@ import { mapService } from './services/map.service.js'
 
 window.onload = onInit
 
+let gUserPos = null
+
 // To make things easier in this project structure 
 // functions that are called from DOM are defined on a global app object
 window.app = {
@@ -37,11 +39,17 @@ function renderLocs(locs) {
     const selectedLocId = getLocIdFromQueryParams()
 
     var strHTML = locs.map(loc => {
+        let distance
+        if(gUserPos) {
+            const {lat,lng} = loc.geo
+            distance = utilService.getDistance(gUserPos, {lat,lng}).toFixed(2)
+        }
         const className = (loc.id === selectedLocId) ? 'active' : ''
         return `
         <li class="loc ${className}" data-id="${loc.id}">
             <h4>  
                 <span>${loc.name}</span>
+                <span>${distance}</span>
                 <span title="${loc.rate} stars">${'★'.repeat(loc.rate)}</span>
             </h4>
             <p class="muted">
@@ -132,6 +140,7 @@ function onPanToUserPos() {
     mapService.getUserPosition()
         .then(latLng => {
             mapService.panTo({ ...latLng, zoom: 15 })
+            gUserPos = latLng
             unDisplayLoc()
             loadAndRenderLocs()
             flashMsg(`You are at Latitude: ${latLng.lat} Longitude: ${latLng.lng}`)
