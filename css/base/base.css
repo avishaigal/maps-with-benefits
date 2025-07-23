@@ -1,12 +1,12 @@
 body {
-    background-color: var(--bg1);
-    color: #eee;
+    background-color: var( --clrPrimary-4);
+    color: var(--clrPrimary-2);
     overflow-x: hidden;
 }
 
 header {
-    background-color: var(--bg2);
-    color: aliceblue;
+    background-color: var(--clrPrimary-4);
+    color: var();
     padding: 0.3em;
 }
 
@@ -16,15 +16,15 @@ header h1 {
 
 input[type=text],input[type=number] {
     line-height: 2em;
-    background-color: var(--color1);
+    background-color: var( --clrPrimary-5);
     border: 0;
 }
 
 button {
-    color: whitesmoke;
+    color: var(--clrPrimary-4);
     border: 0;
     border-radius: .2em;
-    background-color: #222;
+    background-color: var(--clrPrimary-2);
     padding: 6px 10px;
     margin: 2px;
     cursor: pointer;
@@ -32,8 +32,8 @@ button {
 }
 
 button:hover {
-    color: var(--color2);
-    background-color: #111;
+    color: var(--clrPrimary-5);
+    background-color: var(--clrPrimary);
 }
 
 .muted {
@@ -44,4 +44,3 @@ button:hover {
 .smaller {
     font-size: .8em;
 }
-

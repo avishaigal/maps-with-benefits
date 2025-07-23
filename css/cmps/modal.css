@@ -1,0 +1,22 @@
+.location-dialog {
+    display: grid;
+    position: fixed;
+    min-width: 300px;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    
+
+    color: var(--clrPrimary-2);
+    background-color: var(--clrPrimary-3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 1rem;
+}
