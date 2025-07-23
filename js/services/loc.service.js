@@ -20,6 +20,7 @@ const DB_KEY = 'locs'
 var gSortBy = { rate: -1 }
 var gFilterBy = { txt: '', minRate: 0}
 var gPageIdx
+var gTime = 86400000
 
 _createLocs()
 
@@ -30,7 +31,8 @@ export const locService = {
     save,
     setFilterBy,
     setSortBy,
-    getLocCountByRateMap
+    getLocCountByRateMap,
+    getLocCountByTimeMap,
 }
 
 function query() {
@@ -96,6 +98,22 @@ function getLocCountByRateMap() {
             }, { high: 0, medium: 0, low: 0 })
             locCountByRateMap.total = locs.length
             return locCountByRateMap
+        })
+}
+
+function getLocCountByTimeMap() {
+    return storageService.query(DB_KEY)
+        .then(locs => {
+            const locCountByTimeMap = locs.reduce((map, loc) => {
+                console.log(loc);
+                
+                if (loc.updatedAt === loc.createdAt) map.past++
+                else if (Date.now() - loc.updatedAt < gTime) map.today++
+                else map.never++
+                return map
+            }, { past: 0, today: 0, never: 0 })
+            locCountByTimeMap.total = locs.length
+            return locCountByTimeMap
         })
 }
 
