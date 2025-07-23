@@ -67,7 +67,7 @@ function renderLocs(locs) {
     }
     document.querySelector('.debug').innerText = JSON.stringify(locs, null, 2)
 }
-
+// testing comment
 function onRemoveLoc(locId) {
     locService.remove(locId)
         .then(() => {
